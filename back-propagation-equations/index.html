@@ -1,0 +1,686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Viktor Bubanja">
+      
+      
+        <link rel="canonical" href="https://viktorbubanja.co/back-propagation-equations/">
+      
+      
+        <link rel="prev" href="../single-underlying-principle-of-clean-code/">
+      
+      
+        <link rel="next" href="../python-metaclasses/">
+      
+      
+      <link rel="icon" href="../images/anchor-solid.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Proofs of the Four Fundamental Equations Behind Back Propagation - Viktor Bubanja</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proofs-of-the-four-fundamental-equations-behind-back-propagation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Viktor Bubanja" class="md-header__button md-logo" aria-label="Viktor Bubanja" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 96a32 32 0 1 1-64 0 32 32 0 1 1 64 0zm21.1 80C367 158.8 384 129.4 384 96c0-53-43-96-96-96s-96 43-96 96c0 33.4 17 62.8 42.9 80H224c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v208h-48c-53 0-96-43-96-96v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97 263c-9.4-9.4-24.6-9.4-33.9 0L7 319c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 88.4 71.6 160 160 160h160c88.4 0 160-71.6 160-160v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-56-56c-9.4-9.4-24.6-9.4-33.9 0l-56 56c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 53-43 96-96 96H320V240h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-10.9z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Viktor Bubanja
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Proofs of the Four Fundamental Equations Behind Back Propagation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Viktor Bubanja" class="md-nav__button md-logo" aria-label="Viktor Bubanja" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 96a32 32 0 1 1-64 0 32 32 0 1 1 64 0zm21.1 80C367 158.8 384 129.4 384 96c0-53-43-96-96-96s-96 43-96 96c0 33.4 17 62.8 42.9 80H224c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v208h-48c-53 0-96-43-96-96v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97 263c-9.4-9.4-24.6-9.4-33.9 0L7 319c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 88.4 71.6 160 160 160h160c88.4 0 160-71.6 160-160v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-56-56c-9.4-9.4-24.6-9.4-33.9 0l-56 56c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 53-43 96-96 96H320V240h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-10.9z"/></svg>
+
+    </a>
+    Viktor Bubanja
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://github.com/viktor-bubanja.png" alt="Viktor Bubanja">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://linkedin.com/in/viktor-bubanja/">Viktor Bubanja</a>
+                        
+                      </strong>
+                      <br>
+                      Creator
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2024-06-04 00:00:00" class="md-ellipsis">June 4, 2024</time>
+                      </div>
+                    </li>
+                    
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              5 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="proofs-of-the-four-fundamental-equations-behind-back-propagation">Proofs of the Four Fundamental Equations Behind Back Propagation</h1>
+<p>When learning about how gradient descent and back propagation work, it can be tempting to take the underlying mathematics as a given and skip over the details. This is especially true with the level of abstraction that modern machine learning libraries like TensorFlow and PyTorch work at. However, a quote that I have observed to be true over and over again applies here:</p>
+<blockquote>
+<p>"All non-trivial abstractions, to some degree, are leaky." - Joel Spolsky</p>
+</blockquote>
+<p>I believe it always pays to understand the behind-the-scenes workings of the technologies we work with because at some point things will go wrong and we will need understanding at a deeper level (you can read more about the Law of Leaky Abstractions <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">here</a>).</p>
+<p>Therefore, since back propagation is a foundational concept in machine learning, it is worth attaining a deep level of understanding of the constituting equations. For mathematics, this typically requires understanding the proofs of the equations.</p>
+<p>All four proofs rely on the chain rule from multivariate calculus. If you are comfortable with the chain rule I recommend first attempting the proofs yourself.</p>
+<!-- more -->
+
+<p><em>Note: I only cover the four fundamental equations here but if you are interesting in a deeper understanding of the overall algorithm I highly recommend the free online textbook <a href="http://neuralnetworksanddeeplearning.com/index.html">Neural Networks and Deep Learning</a> by Michael Nielsen which doesn't skip over any of the underlying heavy stuff.</em></p>
+<h1 id="first-equation-error-in-the-output-layer-l">First Equation: Error in the Output Layer (δᴸ)</h1>
+<p>This equation measures how fast the cost function is changing as a function of the <span class="arithmatex">\(j^th\)</span> output activation.</p>
+<p>$$
+  \delta^L = \nabla_a C \odot \sigma'(z^L) \tag{BP1}
+  $$</p>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\( \delta^L \)</span> is the vector of errors at the output layer L</li>
+<li><span class="arithmatex">\( \nabla_a C \)</span> is the gradient of the cost function with respect to the output activations</li>
+<li><span class="arithmatex">\( \sigma' \)</span> is the derivative of the activation function</li>
+<li><span class="arithmatex">\( z^L \)</span> is the input to the neurons in the output layer</li>
+</ul>
+<h3 id="first-equation-proof">First Equation Proof</h3>
+<p>In multivariate calculus, the generalised chain rule involves summing the partial derivatives like so:</p>
+<p>$$
+   \frac{dz}{dt} = \frac{dz}{dx}\frac{dx}{dt} + \frac{dz}{dy}\frac{dy}{dt}
+   $$</p>
+<p>or more generally:</p>
+<p>$$
+   \frac{\partial z}{\partial t} = \sum_{j} \frac{\partial z}{\partial u_j}\frac{\partial u_j}{\partial t}
+   $$</p>
+<p>In other words, we calculate <span class="arithmatex">\(\frac{\partial z}{\partial t}\)</span> through all "paths" (or functions) through which <span class="arithmatex">\(z\)</span> is functionally dependent on <span class="arithmatex">\(t\)</span>.</p>
+<p>In the context of back propagation, this means that:</p>
+<p>$$
+   \frac{\partial C}{\partial z_{j}^L} = \sum_{k} \frac{\partial C}{\partial a_{k}^L}\frac{\partial a_{k}^L}{\partial z_{j}^L}
+   $$</p>
+<p>Since <span class="arithmatex">\(a_k\)</span> is a function of <span class="arithmatex">\(z_j\)</span> only when <span class="arithmatex">\(k=j\)</span> (i.e. <span class="arithmatex">\(z_j\)</span> is not found in <span class="arithmatex">\(a_k\)</span> and so <span class="arithmatex">\(\frac{\partial a_k}{\partial z_j} = 0\)</span> when <span class="arithmatex">\(k \neq j\)</span>), we can simplify this to:</p>
+<p>$$
+   \frac{\partial C}{\partial z_{j}^L} = \frac{\partial C}{\partial a_{j}^L}\frac{\partial a_{k}^L}{\partial z_{j}^L}
+   $$</p>
+<p>Recalling that <span class="arithmatex">\(a_{j}^L = \sigma(z_{j}^L)\)</span>, the equation becomes:</p>
+<p>$$
+   \delta_{j}^L = \frac{\partial C}{\partial a_{j}^L}  \sigma'{\partial z_{j}^L} \tag{BP1}
+   $$</p>
+<p>(component expression for <span class="arithmatex">\(\delta_{j}^L\)</span> which is equivalent to the above matrix-based form).</p>
+<h1 id="second-equation-error-l-in-terms-of-the-error-l1-in-the-next-layer">Second Equation: Error δᴸ in terms of the Error δᴸ⁺¹ in the Next Layer</h1>
+<p>The error <span class="arithmatex">\( \delta^l \)</span> for any layer <span class="arithmatex">\( l \)</span> in terms of the error <span class="arithmatex">\( \delta^{l+1} \)</span> in the next layer <span class="arithmatex">\( l+1 \)</span> is given by:
+ $$
+ \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \tag{BP2}
+ $$</p>
+<ul>
+<li><span class="arithmatex">\( \delta^l \)</span> is the vector of errors for any layer l.</li>
+<li><span class="arithmatex">\( w^{l+1} \)</span> represents the weights from layer l to layer l+1.</li>
+<li><span class="arithmatex">\( \delta^{l+1} \)</span> is the error at layer l+1.</li>
+</ul>
+<h3 id="second-equation-proof">Second Equation Proof</h3>
+<p>$$
+\begin{align}
+\delta_j^l &amp;= \frac{\delta C}{\delta z_{j}^l} \
+&amp;=\sum\frac{\partial C}{\partial z_{k}^{l+1}}\frac{\partial z_{k}^{l+1}}{\partial z_{j}^l} \
+&amp;=\sum\frac{\partial z_k^{l+1}}{\partial z_j^l}\delta_k^{l+1}
+\end{align}
+$$
+To find <span class="arithmatex">\(\frac{\partial z_k^{l+1}}{\partial z_j^l}\)</span>:
+$$
+\begin{align}
+z_k^{l+1} &amp;= \sum_{j}w_{kj}^{l+1}a_j^l + b_k^{l+1} \
+&amp;= \sum_{j}w_{kj}^{l+1}\sigma(z_j^l) + b_k^{l+1}
+\end{align}
+$$
+Differentiating with respect to <span class="arithmatex">\(z_j^{l}\)</span>:
+$$
+\begin{align}
+\frac{\partial z_k^{l+1}}{\partial z_j^l} &amp;= w_kj^{l+1}\frac{\partial a_j^l}{\partial z_j^l} \
+&amp;= w_kj^{l+1}\sigma'(z_j^l)
+\end{align}
+$$
+Substituting back:
+$$
+   \sum \frac{\partial z_k^{l+1}}{\partial z_j^l} \delta_k^{l+1} = \sum w_kj^{l+1} \sigma ' (z_j^l) \delta _k ^{l+1}
+$$
+which is BP2 in component form.</p>
+<h1 id="third-equation-rate-of-change-of-the-cost-with-respect-to-any-bias-in-the-network">Third Equation: Rate of Change of the Cost with Respect to Any Bias in the Network</h1>
+<p>$$
+   \frac{\partial C}{\partial b_j^l} = \delta_j^l \tag{BP3}
+   $$</p>
+<ul>
+<li><span class="arithmatex">\( \frac{\partial C}{\partial b^l_j} \)</span> represents the partial derivative of the cost function with respect to the bias of the j-th neuron in the l-th layer.</li>
+<li><span class="arithmatex">\( \delta^l_j \)</span> is the error term for the j-th neuron in the l-th layer, indicating how much the cost function changes with a change in the bias of this neuron.</li>
+</ul>
+<h3 id="third-equation-proof">Third Equation Proof</h3>
+<p>Substituting BP2 in component form:</p>
+<p>$$
+  \begin{align}
+  \frac{\partial C}{\partial b_j^l} &amp;= \sum_k \frac{\partial C}{\partial z_k^{l+1}} \frac {\partial z_k^{l+1}}{\partial b_j^l} \
+  &amp;= \sum_k \delta _k^{l+1} \frac {\partial z_k^{l+1}}{\partial b_j^l}
+  \end{align}
+  $$</p>
+<p>Finding <span class="arithmatex">\(\frac {\partial z_k^{l+1}}{\partial b_j^l}\)</span>:</p>
+<p>$$
+  \begin{align}
+  z_k^{l+1} &amp;= \sum_j w_{kj}^{l+1} a_j^l + b_k^{l+1} \
+  &amp;= \sum_j w_{kj}^{l+1} \sigma (z_j^l) + b_k^{l+1}
+  \end{align}
+  $$</p>
+<p>We can write <span class="arithmatex">\(z_j^l = W + b_j^l\)</span> where <span class="arithmatex">\(W\)</span> is equal to the sum of the weighted inputs tothe <span class="arithmatex">\(j^{th}\)</span> neuron in the <span class="arithmatex">\(l^{th}\)</span> layer (i.e. <span class="arithmatex">\(W = z_j^l - b_j^l\)</span>).
+Then:</p>
+<p>$$
+  z_k^{l+1} = \sum_j w_{kj}^{l+2} \sigma (W + b_j^l) + b_k^{l+1}
+  $$</p>
+<p>For a specific weight, <span class="arithmatex">\(b_j^l\)</span>:</p>
+<p>$$
+  \frac {\partial z_k^{l+1}}{\partial b_j^l} = w_{kj}^{l+1} \sigma ' (z_j^l)
+  $$</p>
+<p>Substituting back:</p>
+<p>$$
+  \frac {\partial C}{\partial b_j^l} = \sum_k \delta_k^{l+1} \frac {\partial z_k^{l+1}}{\partial b_j^l} = \sum_k \delta_k^{l+1}w_{kj}^{l+1} \sigma'(z_j^l) = \delta_j^l
+  $$</p>
+<h1 id="fourth-equation-rate-of-change-of-the-cost-with-respect-to-any-weight-in-the-network">Fourth Equation: Rate of Change of the Cost with Respect to Any Weight in the Network</h1>
+<p>$$
+   \frac{\partial C}{\partial w_{jk}^l} = a_k^{l-1} \delta_j^l \tag{BP4}
+   $$</p>
+<ul>
+<li><span class="arithmatex">\( \frac{\partial C}{\partial w^l_{jk}} \)</span> is the partial derivative of the cost function with respect to the weight connecting the k-th neuron in the (l-1)-th layer to the j-th neuron in the l-th layer.</li>
+<li><span class="arithmatex">\( a^{l-1}_k \)</span> is the activation of the k-th neuron in the (l-1)-th layer.</li>
+<li><span class="arithmatex">\( \delta^l_j \)</span> is the error term for the j-th neuron in the l-th layer.</li>
+</ul>
+<h3 id="fourth-equation-proof">Fourth Equation Proof</h3>
+<p>$$
+  \begin{align}
+  \frac{\partial C}{\partial w_{jk}^l} &amp;= \sum_k \frac{\partial C}{\partial z_j^l} \frac{\partial z_j^l}{\partial w_{jk}^l} \
+  &amp;= \sum_k \frac{\partial z_j^l}{\partial w_{jk}^l} \delta_j^l \
+  &amp;= \frac {\partial z_j^l}{\partial w_{jk}^l} \delta_j^l
+  \end{align}
+  $$</p>
+<p><em>Note: we can make the simplification to remove the summation because <span class="arithmatex">\(z_j^l\)</span> is only a function of <span class="arithmatex">\(w_{jk}\)</span> for the weighted input of <span class="arithmatex">\(w_{jk}\)</span> and so differentiating <span class="arithmatex">\(z_j^l\)</span> by any other weight equals zero.</em></p>
+<p>Finding <span class="arithmatex">\(\frac {\partial z_j^l}{\partial w_{jk} ^l}\)</span>:</p>
+<p>$$
+  \begin{align}
+  z_j^l &amp;= \sum_k w_{jk}^la_k^{l-1} + b_j^l \
+  \frac {\partial z_j^l}{\partial w_{jk}^l} &amp;= a_k^{l-1}
+  \end{align}
+  $$
+(for a specific weight <span class="arithmatex">\(w_{jk}^l\)</span>).</p>
+<p>Substituting back:</p>
+<p>$$
+  \frac{\partial C}{\partial w_{jk}^l} = \frac{\partial z_j^l}{\partial w_{jk}^l} \delta _j^l = a_k^{l-1} \delta_j^l \tag{BP4}
+  $$</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../single-underlying-principle-of-clean-code/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Single Underlying Principle of Clean Code">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                The Single Underlying Principle of Clean Code
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../python-metaclasses/" class="md-footer__link md-footer__link--next" aria-label="Next: Python Metaclasses - For Curiosity&#39;s Sake">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Python Metaclasses - For Curiosity's Sake
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.sections", "navigation.top", "content.code.annotate", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../javascripts/init_katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
