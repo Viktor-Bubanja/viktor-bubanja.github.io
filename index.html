@@ -322,9 +322,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-logits-are-bit-identical-to-hugging-faces" class="md-nav__link">
+  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
     <span class="md-ellipsis">
-      My Logits Are Bit-Identical to Hugging Face's
+      From Scratch - Building a Qwen3 Clone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proofs-of-the-four-fundamental-equations-behind-back-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proofs of the Four Fundamental Equations Behind Back Propagation
     </span>
   </a>
   
@@ -343,15 +352,6 @@
   <a href="#python-metaclasses-for-curiositys-sake" class="md-nav__link">
     <span class="md-ellipsis">
       Python Metaclasses - For Curiosity's Sake
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proofs-of-the-four-fundamental-equations-behind-back-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proofs of the Four Fundamental Equations Behind Back Propagation
     </span>
   </a>
   
@@ -458,9 +458,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-logits-are-bit-identical-to-hugging-faces" class="md-nav__link">
+  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
     <span class="md-ellipsis">
-      My Logits Are Bit-Identical to Hugging Face's
+      From Scratch - Building a Qwen3 Clone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proofs-of-the-four-fundamental-equations-behind-back-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proofs of the Four Fundamental Equations Behind Back Propagation
     </span>
   </a>
   
@@ -479,15 +488,6 @@
   <a href="#python-metaclasses-for-curiositys-sake" class="md-nav__link">
     <span class="md-ellipsis">
       Python Metaclasses - For Curiosity's Sake
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proofs-of-the-four-fundamental-equations-behind-back-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proofs of the Four Fundamental Equations Behind Back Propagation
     </span>
   </a>
   
@@ -610,8 +610,7 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="my-logits-are-bit-identical-to-hugging-faces"><a class="toclink" href="building-an-llm-from-scratch/">My Logits Are Bit-Identical to Hugging Face's</a></h2>
-<p><em>What I learned rebuilding Qwen3 from scratch after finishing Raschka's book</em></p>
+    <h2 id="from-scratch-building-a-qwen3-clone"><a class="toclink" href="building-an-llm-from-scratch/">From Scratch - Building a Qwen3 Clone</a></h2>
 <p>Deep learning was my favourite subject at university. We started with nothing but linear algebra, calculus, and probability, built a single artificial neuron, worked our way up to convolutional networks, and by the end of the semester had something that looked a little like intelligence ("intelligence" as in telling cats from dogs, but still.) That was 2020. When I picked up Sebastian Raschka's <a href="https://github.com/rasbt/LLMs-from-scratch"><em>Build a Large Language Model (From Scratch)</em></a> this year, which has you build and train GPT-2 in plain PyTorch, I got the same feeling again, only stronger: a few simple ingredients, put together carefully, and out comes something that can resemble human speech.</p>
 <p>I enjoyed it enough that I didn't want to stop at the last chapter, so I kept going and rebuilt Qwen3, a current open-weight model, loaded the official weights into my own code, added a KV cache and benchmarked the result.</p>
 <p>Writing the model turned out to be the easy part. Knowing whether it was right was the hard part. So this post is mostly about the tricky bugs I came across, and how to catch them.</p>
@@ -620,6 +619,54 @@
     
       <nav class="md-post__action">
         <a href="building-an-llm-from-scratch/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/viktor-bubanja.png" alt="Viktor Bubanja">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-04 00:00:00">January 4, 2025</time></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="proofs-of-the-four-fundamental-equations-behind-back-propagation"><a class="toclink" href="back-propagation-equations/">Proofs of the Four Fundamental Equations Behind Back Propagation</a></h2>
+<p>When learning about how gradient descent and back propagation work, it can be tempting to take the underlying mathematics as a given and skip over the details. This is especially true with the level of abstraction that modern machine learning libraries like TensorFlow and PyTorch work at. However, a quote that I have observed to be true over and over again applies here:</p>
+<blockquote>
+<p>"All non-trivial abstractions, to some degree, are leaky." - Joel Spolsky</p>
+</blockquote>
+<p>I believe it always pays to understand the behind-the-scenes workings of the technologies we work with because at some point things will go wrong and we will need understanding at a deeper level (you can read more about the Law of Leaky Abstractions <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">here</a>).</p>
+<p>Therefore, since back propagation is a foundational concept in machine learning, it is worth attaining a deep level of understanding of the constituting equations. For mathematics, this typically requires understanding the proofs of the equations.</p>
+<p>All four proofs rely on the chain rule from multivariate calculus. If you are comfortable with the chain rule I recommend first attempting the proofs yourself.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="back-propagation-equations/">
           Continue reading
         </a>
       </nav>
@@ -706,54 +753,6 @@
     
       <nav class="md-post__action">
         <a href="python-metaclasses/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/viktor-bubanja.png" alt="Viktor Bubanja">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-06-04 00:00:00">June 4, 2024</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="proofs-of-the-four-fundamental-equations-behind-back-propagation"><a class="toclink" href="back-propagation-equations/">Proofs of the Four Fundamental Equations Behind Back Propagation</a></h2>
-<p>When learning about how gradient descent and back propagation work, it can be tempting to take the underlying mathematics as a given and skip over the details. This is especially true with the level of abstraction that modern machine learning libraries like TensorFlow and PyTorch work at. However, a quote that I have observed to be true over and over again applies here:</p>
-<blockquote>
-<p>"All non-trivial abstractions, to some degree, are leaky." - Joel Spolsky</p>
-</blockquote>
-<p>I believe it always pays to understand the behind-the-scenes workings of the technologies we work with because at some point things will go wrong and we will need understanding at a deeper level (you can read more about the Law of Leaky Abstractions <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">here</a>).</p>
-<p>Therefore, since back propagation is a foundational concept in machine learning, it is worth attaining a deep level of understanding of the constituting equations. For mathematics, this typically requires understanding the proofs of the equations.</p>
-<p>All four proofs rely on the chain rule from multivariate calculus. If you are comfortable with the chain rule I recommend first attempting the proofs yourself.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="back-propagation-equations/">
           Continue reading
         </a>
       </nav>
