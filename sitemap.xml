@@ -2,47 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://viktor-bubanja.github.io/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/about/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/behind-the-scenes-fastapi-concurrency/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/building-a-pydantic-clone/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://viktor-bubanja.github.io/building-an-llm-from-scratch/</loc>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/back-propagation-equations/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/python-metaclasses/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/single-underlying-principle-of-clean-code/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/static-duck-typing-in-python/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://viktor-bubanja.github.io/the-math-of-humour/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

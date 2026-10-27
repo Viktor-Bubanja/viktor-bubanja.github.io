@@ -322,6 +322,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#my-logits-are-bit-identical-to-hugging-faces" class="md-nav__link">
+    <span class="md-ellipsis">
+      My Logits Are Bit-Identical to Hugging Face's
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#from-scratch-building-a-pydantic-clone" class="md-nav__link">
     <span class="md-ellipsis">
       From Scratch - Building a Pydantic Clone
@@ -449,6 +458,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#my-logits-are-bit-identical-to-hugging-faces" class="md-nav__link">
+    <span class="md-ellipsis">
+      My Logits Are Bit-Identical to Hugging Face's
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#from-scratch-building-a-pydantic-clone" class="md-nav__link">
     <span class="md-ellipsis">
       From Scratch - Building a Pydantic Clone
@@ -556,6 +574,52 @@
     
       <nav class="md-post__action">
         <a href="the-math-of-humour/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/viktor-bubanja.png" alt="Viktor Bubanja">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-09-12 00:00:00">September 12, 2026</time></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="my-logits-are-bit-identical-to-hugging-faces"><a class="toclink" href="building-an-llm-from-scratch/">My Logits Are Bit-Identical to Hugging Face's</a></h2>
+<p><em>What I learned rebuilding Qwen3 from scratch after finishing Raschka's book</em></p>
+<p>Deep learning was my favourite subject at university. We started with nothing but linear algebra, calculus, and probability, built a single artificial neuron, worked our way up to convolutional networks, and by the end of the semester had something that looked a little like intelligence ("intelligence" as in telling cats from dogs, but still.) That was 2020. When I picked up Sebastian Raschka's <a href="https://github.com/rasbt/LLMs-from-scratch"><em>Build a Large Language Model (From Scratch)</em></a> this year, which has you build and train GPT-2 in plain PyTorch, I got the same feeling again, only stronger: a few simple ingredients, put together carefully, and out comes something that can resemble human speech.</p>
+<p>I enjoyed it enough that I didn't want to stop at the last chapter, so I kept going and rebuilt Qwen3, a current open-weight model, loaded the official weights into my own code, added a KV cache and benchmarked the result.</p>
+<p>Writing the model turned out to be the easy part. Knowing whether it was right was the hard part. So this post is mostly about the tricky bugs I came across, and how to catch them.</p>
+<p>Here is the <a href="https://github.com/Viktor-Bubanja/LLM-Inference-Engine">code on GitHub</a>.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="building-an-llm-from-scratch/">
           Continue reading
         </a>
       </nav>
