@@ -313,18 +313,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#laughter-as-a-compression-dividend" class="md-nav__link">
+  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
     <span class="md-ellipsis">
-      Laughter as a Compression Dividend
+      From Scratch - Building a Qwen3 Clone
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
+  <a href="#laughter-as-a-compression-dividend" class="md-nav__link">
     <span class="md-ellipsis">
-      From Scratch - Building a Qwen3 Clone
+      Laughter as a Compression Dividend
     </span>
   </a>
   
@@ -449,18 +449,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#laughter-as-a-compression-dividend" class="md-nav__link">
+  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
     <span class="md-ellipsis">
-      Laughter as a Compression Dividend
+      From Scratch - Building a Qwen3 Clone
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#from-scratch-building-a-qwen3-clone" class="md-nav__link">
+  <a href="#laughter-as-a-compression-dividend" class="md-nav__link">
     <span class="md-ellipsis">
-      From Scratch - Building a Qwen3 Clone
+      Laughter as a Compression Dividend
     </span>
   </a>
   
@@ -549,13 +549,13 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2026-10-26 00:00:00">October 26, 2026</time></li>
+          <time datetime="2026-10-21 00:00:00">October 21, 2026</time></li>
         
         
           
           <li class="md-meta__item">
             
-              19 min read
+              9 min read
             
           </li>
         
@@ -564,16 +564,15 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="laughter-as-a-compression-dividend"><a class="toclink" href="the-math-of-humour/">Laughter as a Compression Dividend</a></h2>
-<p>Do Language Models Get the Joke? Measuring Humour in Bits.</p>
-<div class="arithmatex">\[\mathcal{R}_i = \{\,f_i(z) : z\in\mathbb{R}^k\,\}\subset \mathbb{R}^d,\qquad f_i:\mathbb{R}^k\to\mathbb{R}^d,\qquad k\ll d,\qquad i\in\{1,2\},\]</div>
-<div class="arithmatex">\[x_{\text{setup}} \approx f_1(z_1) \approx f_2(z_2'),\qquad x_{\text{punch}} \approx f_2(z_2),\]</div>
-<div class="arithmatex">\[\min_{z}\lVert x_{\text{punch}}-f_1(z)\rVert^2 \gg \min_{z}\lVert x_{\text{punch}}-f_2(z)\rVert^2.\]</div>
-<p>Funny right? Why aren't you laughing? Let me explain the joke. Don't worry about the symbols. These three lines <em>are</em> a joke, in a sense this post will try to unpack. Roughly: a punchline lands impossibly far from the surface of things you expected, and impossibly close to the surface of things you <em>should</em> have expected, a surface the setup was sitting on all along. Hold onto that; we come back to exactly these equations near the end, and by then you'll be equipped to get it and laugh at my hilarious joke.</p>
+    <h2 id="from-scratch-building-a-qwen3-clone"><a class="toclink" href="building-an-llm-from-scratch/">From Scratch - Building a Qwen3 Clone</a></h2>
+<p>Deep learning was my favourite subject at university. We started with nothing but linear algebra, calculus, and probability, built a single artificial neuron, worked our way up to convolutional networks, and by the end of the semester had something that looked a little like intelligence ("intelligence" as in telling cats from dogs, but still.) That was 2020. When I picked up Sebastian Raschka's <a href="https://github.com/rasbt/LLMs-from-scratch"><em>Build a Large Language Model (From Scratch)</em></a> this year, which has you build and train GPT-2 in plain PyTorch, I got the same feeling again, only stronger: a few simple ingredients, put together carefully, and out comes something that can resemble human speech.</p>
+<p>I enjoyed it enough that I didn't want to stop at the last chapter, so I kept going and rebuilt Qwen3, a current open-weight model, loaded the official weights into my own code, added a KV cache and benchmarked the result.</p>
+<p>Writing the model turned out to be the easy part. Knowing whether it was right was the hard part. So this post is mostly about the tricky bugs I came across, and how to catch them.</p>
+<p>Here is the <a href="https://github.com/Viktor-Bubanja/LLM-Inference-Engine">code on GitHub</a>.</p>
 
     
       <nav class="md-post__action">
-        <a href="the-math-of-humour/">
+        <a href="building-an-llm-from-scratch/">
           Continue reading
         </a>
       </nav>
@@ -601,7 +600,7 @@
           
           <li class="md-meta__item">
             
-              9 min read
+              19 min read
             
           </li>
         
@@ -610,15 +609,16 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="from-scratch-building-a-qwen3-clone"><a class="toclink" href="building-an-llm-from-scratch/">From Scratch - Building a Qwen3 Clone</a></h2>
-<p>Deep learning was my favourite subject at university. We started with nothing but linear algebra, calculus, and probability, built a single artificial neuron, worked our way up to convolutional networks, and by the end of the semester had something that looked a little like intelligence ("intelligence" as in telling cats from dogs, but still.) That was 2020. When I picked up Sebastian Raschka's <a href="https://github.com/rasbt/LLMs-from-scratch"><em>Build a Large Language Model (From Scratch)</em></a> this year, which has you build and train GPT-2 in plain PyTorch, I got the same feeling again, only stronger: a few simple ingredients, put together carefully, and out comes something that can resemble human speech.</p>
-<p>I enjoyed it enough that I didn't want to stop at the last chapter, so I kept going and rebuilt Qwen3, a current open-weight model, loaded the official weights into my own code, added a KV cache and benchmarked the result.</p>
-<p>Writing the model turned out to be the easy part. Knowing whether it was right was the hard part. So this post is mostly about the tricky bugs I came across, and how to catch them.</p>
-<p>Here is the <a href="https://github.com/Viktor-Bubanja/LLM-Inference-Engine">code on GitHub</a>.</p>
+    <h2 id="laughter-as-a-compression-dividend"><a class="toclink" href="the-math-of-humour/">Laughter as a Compression Dividend</a></h2>
+<p>Do Language Models Get the Joke? Measuring Humour in Bits.</p>
+<div class="arithmatex">\[\mathcal{R}_i = \{\,f_i(z) : z\in\mathbb{R}^k\,\}\subset \mathbb{R}^d,\qquad f_i:\mathbb{R}^k\to\mathbb{R}^d,\qquad k\ll d,\qquad i\in\{1,2\},\]</div>
+<div class="arithmatex">\[x_{\text{setup}} \approx f_1(z_1) \approx f_2(z_2'),\qquad x_{\text{punch}} \approx f_2(z_2),\]</div>
+<div class="arithmatex">\[\min_{z}\lVert x_{\text{punch}}-f_1(z)\rVert^2 \gg \min_{z}\lVert x_{\text{punch}}-f_2(z)\rVert^2.\]</div>
+<p>Funny right? Why aren't you laughing? Let me explain the joke. Don't worry about the symbols. These three lines <em>are</em> a joke, in a sense this post will try to unpack. Roughly: a punchline lands impossibly far from the surface of things you expected, and impossibly close to the surface of things you <em>should</em> have expected, a surface the setup was sitting on all along. Hold onto that; we come back to exactly these equations near the end, and by then you'll be equipped to get it and laugh at my hilarious joke.</p>
 
     
       <nav class="md-post__action">
-        <a href="building-an-llm-from-scratch/">
+        <a href="the-math-of-humour/">
           Continue reading
         </a>
       </nav>
